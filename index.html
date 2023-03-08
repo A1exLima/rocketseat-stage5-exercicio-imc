@@ -16,24 +16,32 @@
       rel="stylesheet"
     />
     <title>Cálculo - IMC</title>
+    <script src="./public/javaScript/main.js" defer></script>
   </head>
   <body>
     <div class="alert hide-alert"><p>Digite somente números</p></div>
-    <main>
+    <main class="card">
       <div class="container">
         <h1>Cálculo de IMC</h1>
         <form>
           <label for="weigth">Peso (kg)</label>
-          <input id="weigth" type="number" />
+          <input id="weigth" type="text" placeholder="65" />
 
           <label for="height">Altura (m)</label>
-          <input id="height" type="number" />
+          <input id="height" type="text" placeholder="165" />
 
           <button type="submit">
             Calcular IMC
             <img src="./public/images/arrow.svg" alt="Seta para direita" />
           </button>
         </form>
+      </div>
+
+      <div class="modal-wrapper ">
+        <div class="modal-card">
+          <h2 class="modal-title">Seu IMC é de 28</h2>
+          <p class="modal-text">Obesidade Grau III ou Mórbida</p>
+        </div>
       </div>
     </main>
   </body>

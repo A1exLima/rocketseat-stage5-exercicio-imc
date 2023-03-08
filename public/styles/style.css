@@ -24,15 +24,16 @@
   justify-content: center;
 }
 
-.hide-alert{
+.hide-alert {
   display: none;
 }
 
-main {
+.card {
   font-size: 1.6rem;
   background-color: #040924;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -88,6 +89,14 @@ main {
   color: #212529;
 }
 
+.container form input:focus {
+  outline: 1.5px solid #0b5a71cc;
+}
+
+.container form input::placeholder {
+  opacity: 0.5;
+}
+
 .container form button {
   margin-top: 3.2rem;
   width: 100%;
@@ -103,4 +112,49 @@ main {
   font-family: "Roboto";
   font-weight: 500;
   font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 700ms;
+}
+
+.container form button:hover {
+  background: #2e95b5;
+}
+
+.modal-wrapper{
+  position: absolute;
+  inset: 0;
+  background: #1e1e1ec8;
+  display: grid;
+  place-content: center;
+}
+
+.modal-card {
+  width: 36.3rem;
+  height: 15.2rem;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  display: grid;
+  place-content: center;
+}
+
+.modal-title {
+  font-family: "Roboto";
+  font-weight: 700;
+  font-size: 3.2rem;
+  color: #0c3440;
+  text-align: center;
+}
+
+.modal-text {
+  margin-top: 1rem;
+  font-family: "Roboto";
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #02799d;
+  text-align: center;
+}
+
+.modal-hide{
+  display:none;
 }
