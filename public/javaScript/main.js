@@ -1,16 +1,6 @@
 //Variables
 const form = document.querySelector("form")
-const weightInput = form.querySelector("#weight")
-const heightInput = form.querySelector("#height")
 const buttonClose = document.querySelector(".close")
-
-//screens
-const screenError = document.querySelector(".alert")
-const screenResult = document.querySelector(".modal-wrapper")
-
-//logic
-let textImc = document.querySelector(".modal-title")
-let textInterpretation = document.querySelector(".modal-text")
 
 //Events
 buttonClose.onclick = () => screen.toogleScreen()
@@ -19,22 +9,27 @@ buttonClose.onclick = () => screen.toogleScreen()
 form.onsubmit = (event) => {
   event.preventDefault(event)
 
-  let weight = weightInput.value
-  let height = heightInput.value
-
-  let imc = logicImc.calculateImc(weight, height)
+  let imc = logicImc.calculateImc()
   let classificationImc = logicImc.interpretationImc(imc)
 
-  textImc.innerText = `Seu IMC é de ${imc}`
-  textInterpretation.innerText = classificationImc
+  logicImc.dataPresentation(imc, classificationImc)
 
   screen.checkError(imc, classificationImc)
 }
 
-//functions - Data structuring
+// Data structuring
+// functions
 const logicImc = {
-  calculateImc(weight, height) {
-    return (weight / (height / 100) ** 2).toFixed(1) // IMC = Peso ÷ Altura² => obs:(altura em metros)
+  weightInput: form.querySelector("#weight"),
+  heightInput: form.querySelector("#height"),
+  textImc: document.querySelector(".modal-title"),
+  textInterpretation: document.querySelector(".modal-text"),
+
+  calculateImc() {
+    return (
+      logicImc.weightInput.value /
+      (logicImc.heightInput.value / 100) ** 2
+    ).toFixed(1) // IMC = Peso ÷ Altura² => obs:(altura em centimetros)
   },
   interpretationImc(imc) {
     //Classificacao IMC
@@ -75,23 +70,28 @@ const logicImc = {
         break
     }
   },
+  dataPresentation(imc, classificationImc) {
+    logicImc.textImc.innerText = `Seu IMC é de ${imc}`
+    logicImc.textInterpretation.innerText = classificationImc
+  },
 }
 
 const screen = {
+  error: document.querySelector(".alert"),
+  result: document.querySelector(".modal-wrapper"),
+
   toogleScreen() {
-    screenResult.classList.toggle("modal-hide")
+    screen.result.classList.toggle("modal-hide")
   },
   checkError(imc, classificationImc) {
     if (imc == "NaN" || classificationImc == "NULL") {
-      screenError.innerText = "Digite somente números"
-      screenError.classList.add("hide-alert")
-
+      screen.error.innerText = "Digite somente números"
+      screen.error.classList.add("hide-alert")
     } else if (imc == "Infinity" || imc == 0) {
-      screenError.innerText = "Digite o peso e a altura"
-      screenError.classList.add("hide-alert")
-
+      screen.error.innerText = "Digite o peso e a altura"
+      screen.error.classList.add("hide-alert")
     } else {
-      screenError.classList.remove("hide-alert")
+      screen.error.classList.remove("hide-alert")
       screen.toogleScreen()
     }
   },
