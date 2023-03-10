@@ -1,15 +1,13 @@
 import { logicImc } from "../javaScript/logicImc.js"
 import { screen } from "../javaScript/screen.js"
 
-//Variables
 const form = document.querySelector("form")
 const buttonClose = document.querySelector(".close")
 
-//Events
 buttonClose.onclick = () => screen.toogleScreen()
 window.addEventListener("keydown", screen.handleKeydown)
+window.addEventListener("input", screen.removeAlertOnInput)
 
-//Function Submit
 form.onsubmit = (event) => {
   event.preventDefault(event)
 

@@ -25,4 +25,7 @@ export const screen = {
       screen.toogleScreen()
     }
   },
+  removeAlertOnInput(event) {
+    screen.error.classList.remove("hide-alert")
+  },
 }

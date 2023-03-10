@@ -54,3 +54,5 @@ export const logicImc = {
     logicImc.textInterpretation.innerText = classificationImc
   },
 }
+
+
