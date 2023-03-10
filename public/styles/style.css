@@ -125,6 +125,10 @@
   background: #2e95b5;
 }
 
+.container form button:focus {
+  outline: 2px solid #164251;
+}
+
 .modal-wrapper {
   position: absolute;
   inset: 0;
